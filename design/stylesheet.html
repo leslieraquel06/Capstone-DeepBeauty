@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>My Style Guide</title>
+
+        <style>
+            #font1 {
+                font-family: 'Arial', sans-serif;
+            }
+
+            #font2 {
+                font-family: 'Helvetica', sans-serif;
+            }
+
+            #font3 {
+                font-family: 'Calibri', sans-serif;
+            }
+
+            #font4 {
+                font-family: 'Verdana', sans-serif;
+    
+            }
+            body {
+    margin: 0;
+    padding-left: 3%;
+  }
+  
+header {
+    display: flex;
+    justify-content: center;
+    padding-right: 3%;
+
+}
+
+.col-list {
+    display: flex;
+    justify-content: center;
+    padding-right: 3%;
+  }
+
+.horizontal-list {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; 
+    margin: 0; 
+    display: flex; /* Use flexbox for horizontal layout */
+  }
+  
+.horizontal-list li {
+    margin-right: 10px; /
+  }
+
+
+div.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 10px 0 10px;
+}
+
+#primary1 {
+    background-color: rgb(148, 211, 136);
+}
+
+#primary2 {
+    background-color: rgb(154, 204, 139);
+}
+
+#primary3 {
+    background-color: rgb(208, 252, 194);
+}
+
+#primary4 {
+    background-color: black;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+
+.inputLabel {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input.inputField {
+    padding: 5px;
+    border-radius: 10px;
+    border: 3px solid rgb(154, 204, 139);
+
+}
+
+.success-message {
+    background-color: green;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.denied-message {
+    background-color: red;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.spacer {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.button {
+    background-color: rgb(208, 252, 194);
+    border: 2px solid rgb(148, 211, 136);
+    border-radius: 30px;
+    box-shadow: rgb(148, 211, 136) 4px 4px 0 0;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button:hover {
+    background-color: white;
+  }
+  
+  .button:active {
+    box-shadow: rgb(208, 252, 194) 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+
+  #footer {
+    border-top: 1px solid #dddddd;
+    margin-top: 50px;
+    padding: 10px;
+    text-align: center;
+}
+  
+        </style>
+    
+        <!-- Include script for font awesome icon library. Verify the version is correct -->
+        <script defer src="https://use.fontawesome.com/releases/v6.4.0/js/all.js"></script>
+    </head>
+    <body>
+        <header><h1>Interface Style Guide</h1></header>
+        <a name="Top"></a>
+        <div class="col-list">
+            <ul class="horizontal-list">
+                <li><a href="#font">Font</a></li>
+                <li><a href="#color-Theme">Color Theme</a></li>
+                <li><a href="#headings">Headings</a></li>
+                <li><a href="#buttons">Buttons</a></li>
+                <li><a href="#icons">Icons</a></li>
+                <li><a href="#form-Elements">Form Elements</a></li>
+                <li><a href="#message">Message</a></li>
+            </ul>
+        </div>
+        
+        <!-- Font list starts below -->
+        <div>
+            <div class="page-header">
+                <h1>
+                    <a name="fonts"></a>Font</h1>
+            </div>
+            <p>My application utilizes the following family fonts: </p>
+            <ul class="font-list">
+                <li id="font1">Arial</li>
+                <li id="font2">Helvetica</li>
+                <li id="font3">Calibri</li>
+                <li id="font4">Verdana</li>
+            </ul>
+        </div>
+
+        <!-- Color theme for my web application -->
+        <div class="spacer">
+            <a href="#Top">Back to Top</a>
+        </div>
+
+        <div>
+        <div class="page-header">
+            <h1>
+                <a name="colorTheme"></a>Color Theme</h1>
+        </div>
+            <p>My application incorporates the below color scheme in its interface.</p>
+            <div class="circle" id="primary1"></div>
+            <div class="circle" id="primary2"></div>
+            <div class="circle" id="primary3"></div>
+            <div class="circle" id="primary4"></div>
+        </div>
+
+        <div class="spacer">
+            <a href="#Top">Back to Top</a>
+        </div>
+
+        <!-- Heading sizes-->
+        <div>
+            <div class="page-header">
+                <h1>
+                    <a name="headings"></a>Headings</h1>
+            </div>
+            <p>The below font sizes and styles are used in the application for various content headings.</p>
+            <h1>Heading 1 (26px)</h1>
+            <h2>Heading 2 (20px)</h2>
+            <h3>Heading 3 (16px)</h3>
+        </div>
+
+        <!-- My button design -->
+        <div class="spacer">
+            <a href="#Top">Back to Top</a>
+        </div>
+
+        <div></div>
+            <div class="page-header">
+                <h1><a name="button">Button</a></h1>
+            </div>
+            <p>The application will feature buttons that contain the below color and shape:</p>
+            <button class="button" role="button">Button</button>
+        </div>
+
+        <!-- Icons used for the navigation on web app-->
+        <div class="page-header">
+                <h1><a name="icons">Icons</a></h1>
+                    <i class="fa-solid fa-house fa-lg" style="color: rgb(194, 151, 95)"></i> Home
+                    <i class="fa-sharp fa-thin fa-bottle-droplet" style="color: rgb(194, 151, 95);"></i> Products
+                    <i class="fa-regular fa-paper-plane fa-lg" style="color: rgb(194, 151, 95);"></i> Community
+            </a>
+        </div>
+
+        <div class="spacer">
+            <a href="#Top">Back to Top</a>
+        </div>
+
+        <!-- Form style input -->
+        <div>
+            <div class="page-header">
+                <h1>
+                    <a name="form-Elements"></a>Form Elements</h1>
+            </div>
+            <p>For the form that the application will contain, it will contain input fields and labels with the below styling:</p>
+            <form>
+                <label for="name" class="inputLabel">Name</label>
+                <input type="input" id="name" class="inputField" value="">
+            </form>
+        </div>
+
+        <div class="spacer">
+            <a href="#Top">Back to Top</a>
+        </div>
+
+        <!-- Success and failed message -->
+        <div>
+            <div class="page-header">
+                <h1>
+                    <a name="message"></a>Messages</h1>
+            </div>
+            <p>For completed tasks, application notifications will be presented to the user based. The following contextual messages will be used.</p>
+            <p class="success-message">Great! Your post completed.</p>
+            <p class="denied-message">Message failed. Please ensure all required fields are filled correctly and try again.</p>
+        </div>
+
+        <div class="spacer">
+            <a href="#Top">Back to Top</a>
+        </div>
+
+        <div id="footer">
+            <div class="container">
+                <p class="text-muted">Copyright 2023</p>
+            </div>
+    </body>
+</html>
