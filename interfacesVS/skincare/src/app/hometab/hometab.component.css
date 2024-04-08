@@ -37,3 +37,22 @@ nav ul li a {
     padding: 20px;
     margin-top: 20px;
 }
+
+.about-us {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+  }
+  
+  .about-us-content {
+    text-align: left;
+  }
+  
+  .about-us-content img {
+    max-width: 800px;
+    max-height: 400px;
+    display: block; 
+    margin: auto; 
+  }
+  
