@@ -3,41 +3,43 @@ body {
             margin: 0;
             padding: 0;
         }
-        .header {
+.header {
             background-color: #f2f2f2;
             padding: 20px;
             display: flex;
             align-items: center;
         }
-        .logo {
-            width: 100px;
-            margin-right: 20px;
+.logo {
+    width: 100px; 
+    height: 100px;
+    border-radius: 50%; 
+    background-size: cover;
         }
-        nav ul {
+ nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             display: flex;
         }
-        nav ul li {
+ nav ul li {
             margin-right: 20px;
         }
-        nav ul li a {
+ nav ul li a {
             text-decoration: none;
             color: #333;
             font-weight: bold;
         }
-        .search-bar {
+ .search-bar {
             margin-top: 100px;
     
         }
-        .search-bar input[type="text"] {
+.search-bar input[type="text"] {
             padding: 8px;
             width: 300px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .search-bar input[type="submit"] {
+.search-bar input[type="submit"] {
             padding: 8px 15px;
             background-color: #333;
             color: #fff;
@@ -45,11 +47,12 @@ body {
             border-radius: 5px;
             cursor: pointer;
         }
-        .body-content {
+.body-content {
             padding: 20px;
         }
-        .about-us {
+.about-us {
             background-color: #f9f9f9;
             padding: 20px;
             margin-top: 20px;
         }
+        
