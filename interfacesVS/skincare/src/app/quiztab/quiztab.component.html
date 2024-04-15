@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Quiz</title>
+    <link rel="stylesheet" href="quiztab.component.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Skincare Quiz</h1>
+        <div class="question-box">
+            <img src="question1_image.jpg" alt="Question 1 Image">
+            <div class="question">
+                <p>Question 1: What is your skin type?</p>
+                <input type="radio" id="dry" name="skin-type" value="dry">
+                <label for="dry">Dry</label><br>
+                <input type="radio" id="oily" name="skin-type" value="oily">
+                <label for="oily">Oily</label><br>
+                <input type="radio" id="combination" name="skin-type" value="combination">
+                <label for="combination">Combination</label><br>
+            </div>
+            <button id="next-btn" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+
+    <script src="skincare_quiz.js"></script>
+</body>
+</html>

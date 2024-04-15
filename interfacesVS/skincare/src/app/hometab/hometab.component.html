@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skincare Application</title>
     <link rel="stylesheet" href="hometab.component.css"> 
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="app.component.css">
 </head>
 <body>
 
 <div class="header">
     <a href="https://imgbb.com/"><img src="https://i.ibb.co/NYcG7CL/logo-DB.png" alt="logo-DB"  class="logo"></a>
-    <nav class="menu">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">About Us</a></li>
-        </ul>
-    </nav>
+    <div class="navbar">
+        <nav class="menu">
+            <ul>
+                <li><a [routerLink]= "['/hometab']" routerLinkActive="active">Home</a></li>
+                <li><a [routerLink]="['/producttab']" routerLinkActive="active">Products</a></li>
+                <li><a [routerLink]= "['/communitytab']" routerLinkActive="active">Community</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 <div class="about-us">
@@ -34,6 +34,12 @@
     </div>
 </div>
 
+<div class="quiz">
+    <h1>Skincare Quiz</h1>
+    <a [routerLink]= "['/quiztab']" routerLinkActive="active">Click Here To Take Quiz!</a>
+</div>
+
+<router-outlet></router-outlet>
 
 </body>
 </html>

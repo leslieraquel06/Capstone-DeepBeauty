@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Import the component to be tested
 import { HometabComponent } from './hometab.component';
 
 describe('HometabComponent', () => {
@@ -8,7 +9,7 @@ describe('HometabComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HometabComponent]
+      declarations: [HometabComponent] // Declare HometabComponent as a dependency
     })
     .compileComponents();
     
@@ -21,3 +22,4 @@ describe('HometabComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
