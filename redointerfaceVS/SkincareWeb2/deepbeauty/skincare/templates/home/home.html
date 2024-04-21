@@ -1,0 +1,54 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+    <title>DeepBeauty</title>
+
+
+</head>
+<body>
+
+    {% block body %}
+    <div class="container">
+        <div class="row center-content">
+            <div class="col-md-12">
+                <h1>Welcome to DeepBeauty</h1>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="image-container">
+                    <img src="{% static 'images/about-us.jpg' %}" class="img-fluid" alt="About Us">
+                </div>
+                <div class="card mt-3 content-card">
+                    <div class="card-body">
+                        <h5 class="card-title">About Us</h5>
+                        <p class="card-text">DeepBeauty is your ultimate destination for skincare products. We provide high-quality products for all skin types and concerns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="image-container">
+                    <img src="{% static 'images/skin_care_image.jpg' %}" class="img-fluid" alt="Skin Care">
+                </div>
+                <div class="card mt-3 content-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Take Our Skin Quiz</h5>
+                        <p class="card-text">Discover the best products for your skin type and concerns by taking our skin quiz.</p>
+                        <a href="{% url 'quiz' %}" class="btn btn-primary">Take Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+</body>
+</html>

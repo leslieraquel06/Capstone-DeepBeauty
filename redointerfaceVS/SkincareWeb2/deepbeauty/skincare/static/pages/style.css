@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(208, 252, 194);
+  }
+  
+
+.navbar {
+    background-color: rgb(154, 204, 139);
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 25px 0 black;
+  }
+  
+  .nav-item {
+    margin-right: 20px;
+  }
+  
+  .card-img {
+    height: 150px; /* Adjust the height as needed */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 150px; /* Ensure the image does not exceed its container */
+}
+
+.image-container {
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.footer {
+  background-color: rgb(148, 211, 136);
+  padding: 0px;
+  text-align: center;
+}
+
+.center-content {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.content-card {
+  max-width: 400px; /* Adjust the max-width of the content card */
+  margin: 0 auto; /* Center the content horizontally */
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+.image-container img {
+  max-width: 100%; /* Adjust the max-width of the images */
+  height: auto; /* Maintain aspect ratio */
+}

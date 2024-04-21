@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img height="300px" src="{{ item.item_image}}" class="card"/>
+        </div>
+        <div class="col-md-6">
+            <h1>{{ item.item_name }}</h1>
+            <h2>{{ item.item_desc }}</h2>
+            <h3>{{ item.item_skintype }}</h3>
+            <h4>{{ item.item_prodtype }}</h4>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

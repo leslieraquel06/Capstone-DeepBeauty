@@ -1,0 +1,68 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - DeepBeauty</title>
+    <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        /* Additional CSS styles */
+        .center-content {
+            text-align: center;
+        }
+        .content-card {
+            max-width: 400px; /* Adjust the max-width of the content card */
+            margin: 0 auto; /* Center the content horizontally */
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+        }
+        .image-container img {
+            max-width: 100%; /* Adjust the max-width of the images */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .post-form {
+            display: none; /* Hide the post form initially */
+        }
+    </style>
+
+<script>
+    $(document).ready(function(){
+        // Toggle reply form visibility
+        $('.reply-button').click(function(){
+            $(this).closest('.comment-box').find('.reply-form').toggle();
+        });
+    });
+</script>
+</head>
+<body>
+    {% block body %}
+    <a href="{% url 'createpost' %}" class="btn btn-primary">Create a Post</a>
+            <div class="col-md-6">
+                <h2>Recent Posts</h2>
+                {% for post in posts %}
+                <div class="comment-box">
+                    <p>{{ post.names }}</p>
+                    <p>{{ post.content }}</p>
+                    <p>{{ post.created_at }}</p>
+                    <!-- Add Reply Button -->
+                    <button class="btn btn-primary">Reply</button>
+                    <!-- Reply Form (Hidden by default) -->
+                    <div class="reply-form" style="display: none;">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="text" name="reply_content" placeholder="Your reply...">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+    {% endblock %}
+</body>
+</html>
