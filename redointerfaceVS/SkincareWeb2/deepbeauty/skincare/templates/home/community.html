@@ -1,3 +1,4 @@
+<!-- community.html -->
 {% extends 'home/base.html' %}
 {% load static %}
 
@@ -6,63 +7,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community - DeepBeauty</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'pages/style.css' %}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-        /* Additional CSS styles */
-        .center-content {
-            text-align: center;
-        }
-        .content-card {
-            max-width: 400px; /* Adjust the max-width of the content card */
-            margin: 0 auto; /* Center the content horizontally */
-        }
-        .image-container {
-            display: flex;
-            justify-content: center;
-        }
-        .image-container img {
-            max-width: 100%; /* Adjust the max-width of the images */
-            height: auto; /* Maintain aspect ratio */
-        }
-        .post-form {
-            display: none; /* Hide the post form initially */
-        }
-    </style>
-
-<script>
-    $(document).ready(function(){
-        // Toggle reply form visibility
-        $('.reply-button').click(function(){
-            $(this).closest('.comment-box').find('.reply-form').toggle();
-        });
-    });
-</script>
+ 
 </head>
 <body>
     {% block body %}
-    <a href="{% url 'createpost' %}" class="btn btn-primary">Create a Post</a>
-            <div class="col-md-6">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-5">
+                <a href="{% url 'createpost' %}" class="btn btn-custom d-block mb-3" style="background-color: rgb(148, 211, 136);">Create a Post</a>
                 <h2>Recent Posts</h2>
                 {% for post in posts %}
-                <div class="comment-box">
-                    <p>{{ post.names }}</p>
-                    <p>{{ post.content }}</p>
+                <div class="comment-box mb-3 p-3 border" data-post-id="{{ post.id }}">
+                    <p>Name: {{ post.names }}</p>
+                    <p>Comment: {{ post.content }}</p>
                     <p>{{ post.created_at }}</p>
                     <!-- Add Reply Button -->
-                    <button class="btn btn-primary">Reply</button>
-                    <!-- Reply Form (Hidden by default) -->
-                    <div class="reply-form" style="display: none;">
-                        <form method="post">
+                    <button class="btn btn-custom mb-3 reply-button" style="background-color: rgb(148, 211, 136);">Reply</button>
+                    <!-- Reply Input (Hidden by default) -->
+                    <div class="reply-input" style="display: none;">
+                        <form class="reply-form">
                             {% csrf_token %}
-                            <input type="text" name="reply_content" placeholder="Your reply...">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <input class="form-control reply-text" type="text" placeholder="Your reply...">
+                            <button type="submit" class="btn btn-custom reply-submit mt-2" style="background-color: rgb(148, 211, 136);">Save</button>
                         </form>
                     </div>
+                    <!-- Nested Replies -->
+                    {% for reply in post.replies.all %}
+                    <div class="nested-reply ml-4">
+                        <p>Reply: {{ reply.content }}</p>
+                        <p>{{ reply.created_at }}</p>
+                    </div>
+                    {% endfor %}
                 </div>
                 {% endfor %}
+                <!-- Pagination -->
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if posts.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ posts.previous_page_number }}">previous</a>
+                        {% endif %}
+                        
+                        <span class="current">
+                            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                        </span>
+                        
+                        {% if posts.has_next %}
+                            <a href="?page={{ posts.next_page_number }}">next</a>
+                            <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
                 </div>
+                <!-- End Pagination -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Toggle reply input visibility
+            $('.reply-button').click(function(){
+                $(this).closest('.comment-box').find('.reply-input').toggle();
+            });
+    
+            // Handle reply form submission
+            $('.reply-form').submit(function(e){
+                e.preventDefault(); // Prevent the default form submission
+                var replyText = $(this).find('.reply-text').val(); // Get the reply text
+                var postId = $(this).closest('.comment-box').data('post-id'); // Get the post ID
+                var csrftoken = getCookie('csrftoken'); // Get CSRF token
+    
+                // AJAX request to save the reply
+                $.ajax({
+                    type: 'POST',
+                    url: '/save_reply/',
+                    data: {
+                        'post_id': postId,
+                        'content': replyText,
+                    },
+                    headers: {
+                        'X-CSRFToken': csrftoken // Set CSRF token in request header
+                    },
+                    success: function(response){
+                        // Reload the page to see the updated replies
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error){
+                        // Handle errors
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+    
+            // Function to get CSRF token from cookie
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        });
+    </script>
+    
     {% endblock %}
+    
 </body>
 </html>

@@ -1,0 +1,60 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Quiz Results - DeepBeauty</title>
+    <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+</head>
+<body>
+    {% block body %}
+
+
+    <div class="container justify-content-center mt-5">
+        <h1>Skincare Recommendations</h1>
+        <p>Experience: {{ experience }}</p>
+        <p>Time: {{ time }}</p>
+        <p>Skin Type: {{ skin_type }}</p>
+        <div class="row align-items-start border" style="background-color: rgb(208, 252, 194)">
+          <div class="col">
+            <h2>Morning Routine:</h2>
+            <ol>
+                {% for step in morning_steps %}
+                    <li>{{ step }}</li>
+                    <ol>
+                        {% for item in morning_products %}
+                            {% if item.item_prodtype == step %}
+                                <li>{{ item.item_name }} - {{ item.item_desc }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                {% endfor %}
+            </ol>
+          </div>
+          <div class="col">
+            <h2>Night Routine:</h2>
+            <ol>
+                {% for step in night_steps %}
+                    <li>{{ step }}</li>
+                    <ol>
+                        {% for item in night_products %}
+                            {% if item.item_name == step %}
+                                <li>{{ item.item_name }} - {{ item.item_desc }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                {% endfor %}
+            </ol>
+            
+          </div>
+        </div>
+      </div>
+
+    
+    
+    {% endblock %}
+</body>
+</html>

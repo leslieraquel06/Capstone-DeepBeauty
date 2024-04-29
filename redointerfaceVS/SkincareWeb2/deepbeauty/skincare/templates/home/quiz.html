@@ -1,14 +1,118 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Skincare Quiz - DeepBeauty</title>
+    <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+
 </head>
 <body>
+ 
     {% block body %}
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="quiz-container align-self-start border" style="background-color: rgb(208, 252, 194);">
+                    <form id="quiz-form" method="post" action="{% url 'quiz_results' %}">
+                        {% csrf_token %}
+    
+                        <!--Question 1-->
+                        <div class="question-container text-center" id="question1">
+                            <h2>Question 1: What is your experience with skincare?</h2>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <img class="card-img" src="{% static 'images/question1.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    {% for exp_choice in experience_choices %}
+                                    <label><input type="radio" name="experience" value="{{ exp_choice.0 }}">{{ exp_choice.1 }}</label><br>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <button type="button" onclick="nextQuestion()">Next</button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Question 2 -->
+                        <div class="question-container" id="question2" style="display: none;">
+                            <h2>Question 2: How much time do you have for a skincare routine?</h2>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <img class="card-img" src="{% static 'images/question2.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    {% for time_choice in time_choices %}
+                                    <label><input type="radio" name="time" value="{{ time_choice.0 }}">{{ time_choice.1 }}</label><br>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <button type="button" onclick="nextQuestion()">Next</button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Question 3 -->
+                        <div class="question-container" id="question3" style="display: none;">
+                            <h2>Question 3: What is your skin type?</h2>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <img class="card-img" src="{% static 'images/question3.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    {% for skin_choice in skin_type_choices %}
+                                    <label><input type="radio" name="skintype" value="{{ skin_choice.0 }}">{{ skin_choice.1 }}</label><br>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <button type="button" onclick="showResults()">Get Recommendations</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript for handling quiz questions
+        let currentQuestion = 1;
+    
+        function nextQuestion() {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        }
+    
+        function showQuestion(questionNumber) {
+            document.getElementById('question' + (questionNumber - 1)).style.display = 'none';
+            document.getElementById('question' + questionNumber).style.display = 'block';
+        }
+    
+        function showResults() {
+            document.getElementById('quiz-form').submit();
+        }
+    </script>
+    
     {% endblock %}
 </body>
 </html>

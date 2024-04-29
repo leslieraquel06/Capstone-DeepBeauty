@@ -2,22 +2,36 @@ body {
     background-color: rgb(208, 252, 194);
   }
   
+.logo {
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}
+
+.logo-name {
+  font-size: 30px; /* Adjust font size as needed */
+  font-weight: bold; /* Make font bold */
+  line-height: 50px; 
+}
+
 
 .navbar {
-    background-color: rgb(154, 204, 139);
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 25px 0 black;
-  }
-  
-  .nav-item {
-    margin-right: 20px;
-  }
+  background-color: rgb(154, 204, 139);
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 25px 0 black;
+}
+
+.navbar-nav .nav-link {
+  font-size: 20px; /* Adjust font size as needed */
+  font-weight: bold; /* Make font bold */
+}
   
   .card-img {
     height: 150px; /* Adjust the height as needed */

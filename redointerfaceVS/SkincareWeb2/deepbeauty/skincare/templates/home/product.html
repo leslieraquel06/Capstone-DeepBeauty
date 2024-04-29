@@ -1,4 +1,5 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,24 +7,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeepBeauty</title>
+
 </head>
 <body>
 
     {% block body %}
 
-    <form action="" method="GET">
-        <label for="item_prodtype">Product Type:</label>
-        <input type="search" id="item_prodtype" name="item_prodtype">
-    
-        <label for="item_name">Product Name:</label>
-        <input type="search" id="item_name" name="item_name">
-        
-        <button type="submit">Search</button>
-    </form>
+    <div class="container">
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <form action="" method="GET">
+                    <div class="form-group mb-3">
+                        <label for="item_prodtype"><h4>Product Type:</h4></label>
+                        <input type="search" class="form-control" id="item_prodtype" name="item_prodtype">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="item_name"><h4>Product Name:</h4></label>
+                        <input type="search" class="form-control" id="item_name" name="item_name">
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-custom" style="background-color: rgb(148, 211, 136);">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
         {% for item in item_list %}
             <div class="row align-items-center">
-                <div class="col-md-3 offset-md-2">
+                <div class="col-md-3 offset-md-2 mt-4">
                     <img class="card-img" src="{{ item.item_image }}" alt="Item Image"/>
                 </div>
                 <div class="col-md-4">
@@ -32,24 +44,28 @@
                     <h6>${{ item.item_price }}</h6>
                 </div>
                 <div class="col-md-2">
-                    <a href="{% url 'home:detail' item.id %}" class="btn btn-success">Ingredients</a>
+                    <a href="{% url 'home:detail' item.id %}" class="btn btn-custom" style="background-color: rgb(208, 252, 194);">Ingredients</a>
                 </div>
             </div>
 
         {% endfor %}
     
-        <div class="pagination">
-            {% if item_list.has_previous %}
-                <a href="?page=1"> First </a>
-                <a href="?page={{ item_list.previous_page_number }}"> Previous </a>
-            {% endif %}
-            
-            Page: {{ item_list.number }} of {{ item_list.paginator.num_pages }}
-    
-            {% if item_list.has_next %}
-                <a href="?page={{ item_list.next_page_number }}"> Next </a>
-                <a href="?page={{ item_list.paginator.num_pages }}"> Last </a>
-            {% endif %}
+        <div class="pagination justify-content-center mt-3">
+            <span class="step-links">
+                {% if item_list.has_previous %}
+                    <a href="?page=1">&laquo; First</a>
+                    <a href="?page={{ item_list.previous_page_number }}">Previous</a>
+                {% endif %}
+                
+                <span class="current">
+                    Page {{ item_list.number }} of {{ item_list.paginator.num_pages }}
+                </span>
+                
+                {% if item_list.has_next %}
+                    <a href="?page={{ item_list.next_page_number }}">Next</a>
+                    <a href="?page={{ item_list.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </span>
         </div>
     {% endblock %}
 

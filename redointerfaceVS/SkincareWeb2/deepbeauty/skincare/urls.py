@@ -11,12 +11,11 @@ urlpatterns = [
     
     
     #path('product/', views.product,name='product'),
-    
-    #community
     path('community/', views.community,name='community'),
+    path('home/', views.home,name='home'),
+    path('product/', views.home,name='product'),
+    path('quiz/', views.quiz, name='quiz'),
+   path('quiz/results/', views.quiz_results, name='quiz_results'),
+    path('createpost/', views.createpost, name='createpost'), 
 
-    #quiz
-    path('quiz/', views.quiz,name='quiz'),
-
-    path('createpost/', views.createpost, name='createpost')
 ]

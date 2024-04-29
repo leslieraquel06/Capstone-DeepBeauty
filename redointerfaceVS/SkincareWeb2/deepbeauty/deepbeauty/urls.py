@@ -15,12 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.http import HttpResponseNotFound
 from django.urls import include, path
 from rest_framework import routers
 from skincare import views
 from skincare.views import ItemSearchAPIView, ItemViewSet, MoistViewSet, PostViewSet, SunViewSet
 from django.conf.urls.static import static
 from django.conf import settings
+
 
 router = routers.DefaultRouter()
 router.register('itemdata',ItemViewSet, basename='itemdata')
@@ -37,5 +39,9 @@ urlpatterns = [
     path('home/', views.home,name='home'),
     path('product/', views.home,name='product'),
     path('quiz/', views.quiz, name='quiz'),
-    path('createpost/', views.createpost, name='createpost')
+    path('quiz/', views.quiz, name='skincare_quiz'),
+    path('quiz/results/', views.quiz_results, name='quiz_results'),
+    path('createpost/', views.createpost, name='createpost'),
+    path('save_reply/', views.save_reply, name='save_reply')
+
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
