@@ -12,7 +12,6 @@
 <body>
     {% block body %}
 
-
     <div class="container justify-content-center mt-5">
         <h1>Skincare Recommendations</h1>
         <p>Experience: {{ experience }}</p>
@@ -23,14 +22,14 @@
             <h2>Morning Routine:</h2>
             <ol>
                 {% for step in morning_steps %}
-                    <li>{{ step }}</li>
-                    <ol>
-                        {% for item in morning_products %}
-                            {% if item.item_prodtype == step %}
-                                <li>{{ item.item_name }} - {{ item.item_desc }}</li>
+                    <li><h5>{{ step }}</h5></li>
+                    <ul>
+                        {% for product in morning_products %}
+                            {% if product.item_prodtype == step %}
+                                <li>{{ product.item_name }} - {{ product.item_desc }}</li>
                             {% endif %}
                         {% endfor %}
-                    </ol>
+                    </ul>
                 {% endfor %}
             </ol>
           </div>
@@ -38,14 +37,14 @@
             <h2>Night Routine:</h2>
             <ol>
                 {% for step in night_steps %}
-                    <li>{{ step }}</li>
-                    <ol>
-                        {% for item in night_products %}
-                            {% if item.item_name == step %}
-                                <li>{{ item.item_name }} - {{ item.item_desc }}</li>
+                    <li><h5>{{ step }}</h5></li>
+                    <ul>
+                        {% for product in night_products %}
+                            {% if product.item_prodtype == step %}
+                                <li>{{ product.item_name }} - {{ product.item_desc }}</li>
                             {% endif %}
                         {% endfor %}
-                    </ol>
+                    </ul>
                 {% endfor %}
             </ol>
             

@@ -21,15 +21,15 @@ class Item(models.Model):
     )
 
     MORNING_STEPS = {
-        '10-15 minutes': ['Cleanser', 'Toner', 'Moisturizer', 'Sunscreen'],
-        '20-35 minutes': ['Cleanser', 'Toner', 'Serum', 'Moisturizer', 'Sunscreen'],
-        'Over 35 minutes': [ 'Mask','Cleanser', 'Toner', 'Serum', 'Moisturizer', 'Sunscreen']
+        '10-15 minutes': ['Face Cleanser', 'Toner', 'Moisturizer', 'Sunscreen'],
+        '20-35 minutes': ['Face Cleanser', 'Toner', 'Vitamin-C', 'Moisturizer', 'Sunscreen'],
+        'Over 35 minutes': [ 'Mask','Face Cleanser', 'Toner', 'Vitamin-C', 'Moisturizer', 'Sunscreen']
     }
 
     NIGHT_STEPS = {
-        '10-15 minutes': ['Cleanser', 'Toner', 'Eye cream', 'Moisturizer'],
-        '20-35 minutes': ['Cleanser', 'Toner', 'Serum', 'Eye cream', 'Moisturizer'],
-        'Over 35 minutes': ['Cleanser', 'Exfoliant', 'Toner', 'Serum', 'Eye cream', 'Moisturizer']
+        '10-15 minutes': ['Face Cleanser', 'Toner', 'Eye Serum', 'Moisturizer'],
+        '20-35 minutes': ['Face Cleanser', 'Toner', 'Eye Serum', 'Moisturizer'],
+        'Over 35 minutes': ['Face Cleanser', 'Exfoliant', 'Toner', 'Serum', 'Eye Serum', 'Moisturizer']
     }
     
     def __str__(self):

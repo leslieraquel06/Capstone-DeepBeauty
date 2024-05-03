@@ -132,21 +132,33 @@ def quiz(request):
     }
     return render(request, 'home/quiz.html', context)
 
+
 def quiz_results(request):
     if request.method == 'POST':
         experience = request.POST.get('experience')
         time = request.POST.get('time')
         skin_type = request.POST.get('skintype')
 
-        # Fetching the morning and night routine steps based on the selected time
-        morning_steps = Item.MORNING_STEPS.get(time, [])
-        night_steps = Item.NIGHT_STEPS.get(time, [])
+        if time == '10-15 minutes':
+            morning_steps = ['Face Cleanser', 'Toner', 'Moisturizer', 'Sunscreen']
+            night_steps = ['Face Cleanser', 'Toner', 'Eye Serum', 'Moisturizer']
+        elif time == '20-35 minutes':
+            morning_steps = ['Face Cleanser', 'Toner', 'Vitamin-C', 'Moisturizer', 'Sunscreen']
+            night_steps = ['Face Cleanser', 'Toner', 'Serum', 'Eye Serum', 'Moisturizer']
+        else:
+            morning_steps = [ 'Mask','Face Cleanser', 'Toner', 'Vitamin-C', 'Moisturizer', 'Sunscreen']
+            night_steps = ['Face Cleanser', 'Exfoliant', 'Toner', 'Serum', 'Eye Serum', 'Moisturizer']
 
-        # Fetching products based on the selected skin type and morning/night steps
-        morning_products = Item.objects.filter(item_skintype=skin_type, item_prodtype='Moisturizer', item_name__in=morning_steps)
-        night_products = Item.objects.filter(item_skintype=skin_type, item_prodtype='Moisturizer', item_name__in=night_steps)
+        if skin_type == 'Dry':
+            morning_products = Item.objects.filter(item_skintype='Dry')
+            night_products = Item.objects.filter(item_skintype='Dry')
+        elif skin_type == 'Normal':
+            morning_products = Item.objects.filter(item_skintype='Normal')
+            night_products = Item.objects.filter(item_skintype='Normal')
+        else:
+            morning_products = Item.objects.filter(item_skintype='Oily')
+            night_products = Item.objects.filter(item_skintype='Oily')
 
-        # Passing data to the template
         context = {
             'experience': experience,
             'time': time,
@@ -154,7 +166,7 @@ def quiz_results(request):
             'morning_steps': morning_steps,
             'night_steps': night_steps,
             'morning_products': morning_products,
-            'night_products': night_products,
+            'night_products': night_products
         }
 
         return render(request, 'home/quiz_results.html', context)
